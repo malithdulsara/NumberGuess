@@ -1,47 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: #FFE6FF;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .box {
-    background: white;
-    padding: 35px 50px;
-    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7ff 100%);
+    padding: 50px 60px;
+    border-radius: 25px;
     text-align: center;
-    box-shadow: 0px 0px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(102, 126, 234, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35),
+                0 0 50px rgba(102, 126, 234, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 h1 {
-    margin-bottom: 10px;
-    color: #800080;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.8em;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+p {
+    color: #5a5a7a;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+b {
+    color: #667eea;
+    font-weight: 700;
 }
 
 input[type="text"] {
-    width: 200px;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #D100D1;
-    border-radius: 6px;
+    width: 280px;
+    padding: 16px 20px;
+    font-size: 17px;
+    border: 2.5px solid #667eea;
+    border-radius: 15px;
     outline: none;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
+    background: linear-gradient(135deg, #f5f7ff 0%, #e8eef7 100%);
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+    font-weight: 600;
+}
+
+input[type="text"]:focus {
+    border-color: #764ba2;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7ff 100%);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3),
+                0 0 20px rgba(240, 147, 251, 0.2);
+    transform: scale(1.02);
+}
+
+input[type="text"]::placeholder {
+    color: #b0b0d0;
+    font-weight: 500;
 }
 
 button {
-    padding: 10px 20px;
-    background: #D100D1;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 200% 200%;
     border: none;
     color: white;
-    font-size: 16px;
-    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 15px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4),
+                0 2px 10px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
 }
 
 button:hover {
-    background: #FF00FF;
+    background-position: 200% 0;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5),
+                0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
