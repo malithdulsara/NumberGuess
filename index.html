@@ -13,7 +13,10 @@
     <p>Enter a number between <b>1 - 10</b></p>
 
     <input type="text" id="txtNumber" placeholder="Enter your guess">
-    <button onclick="guess()">Guess</button>
+    <div class="button-container">
+        <button onclick="guess()">Guess</button>
+        <button class="refresh-btn" onclick="refreshGame()">🔄 Refresh</button>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
