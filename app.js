@@ -1,5 +1,20 @@
 let num = Math.floor(Math.random() * 10) + 1;
 console.log(num);
+
+function refreshGame() {
+  num = Math.floor(Math.random() * 10) + 1;
+  document.getElementById("txtNumber").value = "";
+  document.getElementById("txtNumber").focus();
+  console.log(num);
+  Swal.fire({
+    title: "Game Reset!",
+    text: "New number generated. Start guessing!",
+    icon: "success",
+    timer: 1500,
+    showConfirmButton: false
+  });
+}
+
 function guess() {
   let guess = document.getElementById("txtNumber").value; 
   guess = parseInt(guess); 
